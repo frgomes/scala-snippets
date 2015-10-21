@@ -46,7 +46,11 @@ val librarySettings : Seq[Setting[_]] =
 
     libraryDependencies ++=
       Seq(
-        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.4" ))
+        "org.json4s" %% "json4s-scalap"  % "3.3.0",
+        "org.json4s" %% "json4s-core"    % "3.3.0",
+        "org.json4s" %% "json4s-native"  % "3.3.0",
+        "org.json4s" %% "json4s-ext"     % "3.3.0"
+      ))
 
 lazy val runSettings: Seq[Setting[_]] =
   Seq(
