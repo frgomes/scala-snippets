@@ -8,10 +8,11 @@ Quick Guide for the Impatient
 
 ::
 
+    $ mkdir tmp
     $ sbt
     > alias
-    > jsonWrite json.txt
-    > jsonRead  json.txt
+    > jsonWrite tmp/a.json
+    > jsonRead  tmp/a.json
 
 
 List of applications

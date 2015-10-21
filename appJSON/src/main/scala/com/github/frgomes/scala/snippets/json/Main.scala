@@ -25,7 +25,7 @@ class Data {
 class CC[T] { def unapply(a:Any):Option[T] = Some(a.asInstanceOf[T]) }
 object MM extends CC[Map[String, Map[String, Seq[String]]]]
 object M  extends CC[Map[String, Seq[String]]]
-object L  extends CC[List[String]]
+object L  extends CC[Seq[String]]
 object S  extends CC[String]
 object D  extends CC[Double]
 object B  extends CC[Boolean]
