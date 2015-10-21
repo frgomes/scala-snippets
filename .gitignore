@@ -6,6 +6,7 @@ tmp
 dist
 out
 *~
+*\.log
 .ensime
 .ensime_cache
 .history

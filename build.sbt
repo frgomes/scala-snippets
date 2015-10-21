@@ -135,12 +135,10 @@ def javaRunner(mainClass: Option[String] = None,
   val klass = mainClass.fold(Seq.empty[String]) { name => Seq(name) }
   val xargs: Seq[String] = jvm ++ cp ++ klass ++ options
 
-  if(log.isDefined)
-    if(fork) {
-      log.get.info(s"Forking: ${app} " + xargs.mkString(" "))
-    } else {
-      log.get.info(s"Running: ${app} " + xargs.mkString(" "))
-    }
+  if(log.isDefined) {
+    if (fork) log.get.info("Forking:") else log.get.info("Running:")
+    log.get.info(s"    ${app} " + xargs.mkString(" "))
+  }
 
   if (cwd.isDefined) IO.createDirectory(cwd.get)
   val exitCode = runner(app, xargs, cwd, envVars)
