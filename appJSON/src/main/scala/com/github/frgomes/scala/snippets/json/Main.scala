@@ -5,9 +5,9 @@ class Data {
   val list = Seq("a", "b")
   val map : Map[String, Map[String, Seq[String]]] =
     Map(
-      "modules" ->
+      "project" ->
         Map(
-          "children" -> Seq("ModuleA", "ModuleB")),
+          "modules" -> Seq("ModuleA", "ModuleB")),
       "ModuleA" ->
         Map(
           "test:internalDependencyClasspath" -> Seq("ModuleA/target/classes", "ModuleA/target/test-classes"),
@@ -54,14 +54,14 @@ object JsonRead extends Data {
     //XXX println(x3)
 
     (for {
-      MM(map)     <- Seq(sread[Map[String, Map[String, Seq[String]]]](text))
-      M(modules)  <- Seq(map("modules"))
-      L(children) <- Seq(modules("children"))
-      S(module)   <- children
-      M(paths)    <- Seq(map(module))
-      L(i)        <- Seq(paths("test:internalDependencyClasspath"))
-      L(m)        <- Seq(paths("test:managedClasspath"))
-      L(u)        <- Seq(paths("test:unmanagedClasspath"))
+      MM(map)    <- Seq(sread[Map[String, Map[String, Seq[String]]]](text))
+      M(project) <- Seq(map("project"))
+      L(modules) <- Seq(project("modules"))
+      S(module)  <- modules
+      M(paths)   <- Seq(map(module))
+      L(i)       <- Seq(paths("test:internalDependencyClasspath"))
+      L(m)       <- Seq(paths("test:managedClasspath"))
+      L(u)       <- Seq(paths("test:unmanagedClasspath"))
     } yield {
       (module, i, m, u)
     })
