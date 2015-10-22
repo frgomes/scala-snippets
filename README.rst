@@ -21,6 +21,6 @@ List of applications
 JsonRead, JsonWrite
 :::::::::::::::::::
 
-Demonstrate how JSON can be read/written using only standard Scala classes and extractors.
+Demonstrate how JSON can be read/written using json4s and extractors.
 
 see: http://stackoverflow.com/a/4186090/62131
