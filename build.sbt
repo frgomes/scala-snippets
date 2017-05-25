@@ -44,10 +44,14 @@ val librarySettings : Seq[Setting[_]] =
     javacOptions  ++= javacOpts,
     scalacOptions ++= scalacOpts,
 
+    doctestWithDependencies := false,
+
     libraryDependencies ++=
       Seq(
-        "org.json4s" %% "json4s-native"  % "3.3.0",
-        "org.json4s" %% "json4s-ext"     % "3.3.0"
+        "org.scalatest"  %% "scalatest"      % "2.2.3"  % "test",
+        "org.scalacheck" %% "scalacheck"     % "1.12.1" % "test",
+        "org.json4s"     %% "json4s-native"  % "3.3.0",
+        "org.json4s"     %% "json4s-ext"     % "3.3.0"
       ))
 
 lazy val runSettings: Seq[Setting[_]] =
